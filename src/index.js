@@ -1,8 +1,11 @@
 const fastify = require('fastify')({logger:true});
 
-const PORT = 5000;
+
 
 const app = require('./app');
+const { PORT } = require('./config/serverConfig');
+
+const PORT = PORT;
 
 fastify.register(app);
 
