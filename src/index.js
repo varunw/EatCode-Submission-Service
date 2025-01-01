@@ -5,7 +5,7 @@ const connectToDb = require('./config/dbConfig');
 const app = require('./app');
 const { PORT } = require('./config/serverConfig');
 
-const PORT = PORT;
+// const PORT = PORT;
 
 fastify.register(app);
 
@@ -14,7 +14,7 @@ fastify.listen({port:PORT},async (err)=>{
         fastify.log.error(err);
         process.exit(1);
     }
-
+    // console.log("PORT");
     await connectToDb();
     console.log(`Server up on port ${PORT}`);
 })
