@@ -12,6 +12,8 @@ class SubmissionService{
 
     async addSubmission(submissionPayload){
         const problemId = submissionPayload.problemId;
+        const userId = submissionPayload.userId;
+
         const problemAdminApiResponse = await fetchProblemDetails(problemId);
         if(!problemAdminApiResponse){
             throw{message:"Not able to create submission"};
@@ -30,6 +32,8 @@ class SubmissionService{
                 language:submission.language,
                 inputCase:problemAdminApiResponse.data.testCases[0].input,
                 outputCase:problemAdminApiResponse.data.testCases[0].output,
+                userId,
+                submissionId:submission._id
             }
         });
         return {queueResponse:response,submission};
